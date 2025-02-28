@@ -127,15 +127,6 @@ h1, h2 {
     }
 }
 
-@keyframes fadeOut {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
-}
-
 img, video, iframe {
     max-height: 50dvh;
     max-width: 90dvw;
