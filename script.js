@@ -1,16 +1,33 @@
-// Validation for patterns 
 
-// Get all the contact-fields
-const inputFields = document.querySelectorAll(".contact-field");
+document.addEventListener("DOMContentLoaded", () => {
+    const nameField = document.getElementById("name");
+    const emailField = document.getElementById("email");
+    const numField = document.getElementById("number");
+    const msgField = document.getElementById("message");
 
-// Loop through each field 
-inputFields.forEach(field => {
-    field.addEventListener("input", () => {
-        if (field.validity.patternMismatch) {
-            console.log("Pattern Mismatch");
-            alert("hi");
-            let errorMsg = document.querySelector(".error-message");
-            errorMsg.innerHTML = "error";
+    nameField.addEventListener("input", () => {
+        const errorMsg = document.getElementById("name-pattern-mismatch");
+        if (nameField.validity.patternMismatch) {
+            errorMsg.value = "(Special characters disallowed.)";
+        }
+        else { errorMsg.value = ""; }
+    });
+
+    numField.addEventListener("input", () => {
+        if (numField.validity.patternMismatch) {
+            const errorMsg = document.getElementById("num-pattern-mismatch");
+            errorMsg.value = "(Only numbers allowed.)";
         }
     });
+
+    emailField.addEventListener("blur", () => {
+        if (emailField.validity.patternMismatch) {
+        }
+    });
+
+    msgField.addEventListener("input", () => {
+        if (msgField.validity.patternMismatch) {
+        }
+    })
+    
 });
