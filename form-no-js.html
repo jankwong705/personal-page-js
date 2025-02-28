@@ -40,23 +40,29 @@
                     <br>
                     <label for="name" class="contact-label">Your Name:</label>
                     <input type="text" id="name" name="name" class="contact-field" pattern="[a-zA-Z0-9 .,!?']*" required>
+                    <br>
+                    <output class="error-message" id="name-pattern-mismatch"></output>
                     
                     <br><br>
                     
                     <label for="email" class="contact-label">Your Email:</label>
                     <input type="email" id="email" name="email" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" class="contact-field" required>
-                    
+                    <br>
+                    <output class="error-message" id="email-pattern-mismatch"></output>
+
                     <br><br>
 
                     <label for="number" class="contact-label">Your Phone Number (optional):</label>
-                    <input type="number" id="number" name="number" class="contact-field" pattern="^[0-9]+$" min="1000000000" max="9999999999">
+                    <input type="text" id="number" name="number" class="contact-field" pattern="^[0-9]+$" minlength="10" maxlength="10">
+                    <br>
+                    <output class="error-message" id="num-pattern-mismatch"></output>
 
                     <br><br>
                 
                     <label for="message" class="contact-label">Your Message:</label> <br>
                     <textarea id="message" name="message" rows="4" cols="50" class="contact-field" minlength="3" maxlength="3000" pattern="[a-zA-Z0-9 .,!?']*" required></textarea> 
                     <br>
-                    <output class="error-message" id="message-empty-error">(Message cannot be empty.)</output>
+                    <output class="error-message" id="message-empty-error"></output>
 
                     <br><br>
 
