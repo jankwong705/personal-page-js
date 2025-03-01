@@ -1,3 +1,4 @@
+var form_errors = [];
 
 document.addEventListener("DOMContentLoaded", () => {
     const nameField = document.getElementById("name");
@@ -25,6 +26,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 errorMsg.style.transition = "opacity 1s ease-out";
                 errorMsg.style.opacity = "0";
             }, 2000);
+            errorObj = {
+                time: Date.now(),
+                location: "name",
+                value: nameField.value,
+                error: "Special characters as input"
+            };
+            form_errors.push(errorObj);
         }
         else {
             nameField.style.backgroundColor = "white";
@@ -51,6 +59,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 errorMsg.style.transition = "opacity 1s ease-out";
                 errorMsg.style.opacity = "0";
             }, 2000);
+            errorObj = {
+                time: Date.now(),
+                location: "number",
+                value: numField.value,
+                error: "Non-numerical values as input"
+            };
+            form_errors.push(errorObj);
         }
         else {
             numField.style.backgroundColor = "white";
@@ -77,6 +92,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 errorMsg.style.transition = "opacity 1s ease-out";
                 errorMsg.style.opacity = "0";
             }, 2000);
+            errorObj = {
+                time: Date.now(),
+                location: "email",
+                value: emailField.value,
+                error: "Invalid email as input"
+            };
+            form_errors.push(errorObj);
         }
         else {
             emailField.style.backgroundColor = "white";
@@ -104,6 +126,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 errorMsg.style.transition = "opacity 1s ease-out";
                 errorMsg.style.opacity = "0";
             }, 2000);
+            errorObj = {
+                time: Date.now(),
+                location: "message",
+                value: msgField.value,
+                error: "Special characters as input"
+            };
+            form_errors.push(errorObj);
         }
         else {
             msgField.style.backgroundColor = "white";
@@ -123,7 +152,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         if (parseInt(charCount.value) == 3000) {
             charFull.value = "Character limit reached";
+            ferrorObj = {
+                time: Date.now(),
+                location: "message",
+                value: msgField.value,
+                error: "Character limit reached"
+            };
+            form_errors.push(errorObj);
         } else { charFull.value = ""; }
     });
-    
 });
