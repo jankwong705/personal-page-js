@@ -13,6 +13,7 @@ nameField.addEventListener("input", () => {
     const errorMsg = document.getElementById("name-pattern-mismatch");
     if (nameField.validity.patternMismatch) {
         // Masking
+        let errorValue = nameField.value;
         nameField.value = nameField.value.replace(/[^a-zA-Z0-9 ]/g, "");
 
         // Flash
@@ -38,7 +39,7 @@ nameField.addEventListener("input", () => {
         form_errors.push({
             time: Date.now(),
             location: "name",
-            value: nameField.value,
+            value: errorValue,
             error: "Special characters as input"
         });
     }
@@ -51,6 +52,7 @@ numField.addEventListener("input", () => {
     const errorMsg = document.getElementById("num-pattern-mismatch");
     if (numField.validity.patternMismatch) {
         // Masking
+        let errorValue = numField.value;
         numField.value = numField.value.replace(/[^0-9]/g, "");
 
         // Flash
@@ -76,7 +78,7 @@ numField.addEventListener("input", () => {
         form_errors.push({
             time: Date.now(),
             location: "number",
-            value: numField.value,
+            value: errorValue,
             error: "Non-numerical values as input"
         });
     }
@@ -92,6 +94,7 @@ emailField.addEventListener("input", () => {
 
     if (!allowedValues.test(emailField.value)) {
         // Masking
+        let errorValue = emailField.value;
         emailField.value = emailField.value.replace(/[^a-zA-Z0-9._%+-@]/g, ""); // Remove invalid characters
 
         // Flash
@@ -117,7 +120,7 @@ emailField.addEventListener("input", () => {
         form_errors.push({
             time: Date.now(),
             location: "email",
-            value: emailField.value,
+            value: errorValue,
             error: "Special characters as input"
         });
     }
@@ -167,6 +170,7 @@ msgField.addEventListener("input", () => {
     const allowedPattern = /^[a-zA-Z0-9 .,!?'\n]*$/;
     if (!allowedPattern.test(msgField.value)) {
         // Masking
+        let errorValue = msgField.value;
         msgField.value = msgField.value.replace(/[^a-zA-Z0-9 .,!?'\n]/g, "");
 
         // Flash
@@ -191,7 +195,7 @@ msgField.addEventListener("input", () => {
         form_errors.push({
             time: Date.now(),
             location: "message",
-            value: msgField.value,
+            value: errorValue,
             error: "Special characters as input"
         });
     }
@@ -219,7 +223,7 @@ msgField.addEventListener("input", () => {
         form_errors.push({
             time: Date.now(),
             location: "message",
-            value: msgField.value,
+            value: "<Long message>",
             error: "Character limit reached"
         });
     } else { charFull.value = ""; }
