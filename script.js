@@ -13,7 +13,7 @@ nameField.addEventListener("input", () => {
     const errorMsg = document.getElementById("name-pattern-mismatch");
     if (nameField.validity.patternMismatch) {
         // Masking
-        nameField.value = nameField.value.replace(/[^a-zA-Z0-9]/g, "");
+        nameField.value = nameField.value.replace(/[^a-zA-Z0-9 ]/g, "");
 
         // Flash
         setTimeout(() => {
@@ -88,11 +88,11 @@ numField.addEventListener("input", () => {
 // Check input against special characters 
 emailField.addEventListener("input", () => {
     const errorMsg = document.getElementById("email-pattern-mismatch");
-    let allowedValues = /^[a-zA-Z0-9@]*$/;
+    let allowedValues = /^[a-zA-Z0-9._%+-@]*$/;
 
     if (!allowedValues.test(emailField.value)) {
         // Masking
-        emailField.value = emailField.value.replace(/[^a-zA-Z0-9@]/g, ""); // Remove invalid characters
+        emailField.value = emailField.value.replace(/[^a-zA-Z0-9._%+-@]/g, ""); // Remove invalid characters
 
         // Flash
         setTimeout(() => {
@@ -198,7 +198,7 @@ msgField.addEventListener("input", () => {
     else {
         msgField.style.backgroundColor = "white";
     }
-    
+
     // Count char 
     const charCount = document.getElementById("char-count");
     const totalAllowed = document.getElementById("total-char");
