@@ -2,6 +2,8 @@
 // {time, location, value, error}
 var form_errors = [];
 
+const formElement = document.getElementById("send-msg");
+
 const nameField = document.getElementById("name");
 const emailField = document.getElementById("email");
 const numField = document.getElementById("number");
@@ -69,7 +71,6 @@ numField.addEventListener("input", () => {
     else {
         numField.style.backgroundColor = "white";
     }
-    console.log(form_errors);
 });
 
 emailField.addEventListener("input", () => {
@@ -98,6 +99,7 @@ emailField.addEventListener("input", () => {
             value: emailField.value,
             error: "Invalid email as input"
         });
+        formErrorsElement.value = JSON.stringify(form_errors);
     }
     else {
         emailField.style.backgroundColor = "white";
@@ -158,4 +160,3 @@ msgField.addEventListener("input", () => {
         });
     } else { charFull.value = ""; }
 });
-
