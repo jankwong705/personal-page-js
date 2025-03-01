@@ -279,7 +279,7 @@ job-exp:has(h3) {
     background-color: rgb(243, 199, 199);
 }
 
-.error-message, #reply-soon {
+.error-message, .info {
     font-size: small;
 }
 

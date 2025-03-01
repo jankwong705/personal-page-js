@@ -108,6 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
         else {
             msgField.style.backgroundColor = "white";
         }
+        // Count char 
     });
     
 });
