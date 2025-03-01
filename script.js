@@ -12,7 +12,10 @@ const msgField = document.getElementById("message");
 nameField.addEventListener("input", () => {
     const errorMsg = document.getElementById("name-pattern-mismatch");
     if (nameField.validity.patternMismatch) {
-        //Flash
+        // Masking
+        nameField.value = nameField.value.replace(/[^a-zA-Z0-9]/g, "");
+
+        // Flash
         setTimeout(() => {
             nameField.style.backgroundColor = "rgb(243, 199, 199)" ? "white" : "white";
         }, 100);
@@ -24,11 +27,14 @@ nameField.addEventListener("input", () => {
         // Display error msg
         errorMsg.value = "(Special characters disallowed.)";
         errorMsg.style.opacity = "1";
+
         // Fade
         setTimeout(() => {
             errorMsg.style.transition = "opacity 1s ease-out";
             errorMsg.style.opacity = "0";
         }, 2000);
+
+        // Store errors
         form_errors.push({
             time: Date.now(),
             location: "name",
@@ -44,7 +50,10 @@ nameField.addEventListener("input", () => {
 numField.addEventListener("input", () => {
     const errorMsg = document.getElementById("num-pattern-mismatch");
     if (numField.validity.patternMismatch) {
-        //Flash
+        // Masking
+        numField.value = numField.value.replace(/[^0-9]/g, "");
+
+        // Flash
         setTimeout(() => {
             numField.style.backgroundColor = "rgb(243, 199, 199)" ? "white" : "white";
         }, 100);
@@ -56,11 +65,14 @@ numField.addEventListener("input", () => {
         // Display error msg
         errorMsg.value = "(Only numbers allowed.)";
         errorMsg.style.opacity = "1";
+
         // Fade
         setTimeout(() => {
             errorMsg.style.transition = "opacity 1s ease-out";
             errorMsg.style.opacity = "0";
         }, 2000);
+
+        // Store errors
         form_errors.push({
             time: Date.now(),
             location: "number",
@@ -73,10 +85,16 @@ numField.addEventListener("input", () => {
     }
 });
 
+// Check input against special characters 
 emailField.addEventListener("input", () => {
     const errorMsg = document.getElementById("email-pattern-mismatch");
-    if (emailField.validity.patternMismatch) {
-        //Flash
+    let allowedValues = /^[a-zA-Z0-9@]*$/;
+
+    if (!allowedValues.test(emailField.value)) {
+        // Masking
+        emailField.value = emailField.value.replace(/[^a-zA-Z0-9@]/g, ""); // Remove invalid characters
+
+        // Flash
         setTimeout(() => {
             emailField.style.backgroundColor = "rgb(243, 199, 199)" ? "white" : "white";
         }, 100);
@@ -86,20 +104,58 @@ emailField.addEventListener("input", () => {
         emailField.style.backgroundColor = "rgb(243, 199, 199)" ? "white" : "white";
 
         // Display error msg
-        errorMsg.value = "(Not a valid email)";
+        errorMsg.value = "(Special characters disallowed.)";
         errorMsg.style.opacity = "1";
+
         // Fade
         setTimeout(() => {
             errorMsg.style.transition = "opacity 1s ease-out";
             errorMsg.style.opacity = "0";
         }, 2000);
+
+        // Store errors
+        form_errors.push({
+            time: Date.now(),
+            location: "email",
+            value: emailField.value,
+            error: "Special characters as input"
+        });
+    }
+    else {
+        emailField.style.backgroundColor = "white";
+    }
+});
+
+// Check for validity of email
+emailField.addEventListener("blur", () => {
+    const errorMsg = document.getElementById("email-pattern-mismatch");
+    if (emailField.validity.patternMismatch) {
+        // Flash
+        setTimeout(() => {
+            emailField.style.backgroundColor = "rgb(243, 199, 199)" ? "white" : "white";
+        }, 100);
+        setTimeout(() => {
+            emailField.style.backgroundColor = "white" ? "rgb(243, 199, 199)" : "rgb(243, 199, 199)";
+        }, 100);
+        emailField.style.backgroundColor = "rgb(243, 199, 199)" ? "white" : "white";
+
+        // Display error msg
+        errorMsg.value = "(Not a valid email.)";
+        errorMsg.style.opacity = "1";
+
+        // Fade
+        setTimeout(() => {
+            errorMsg.style.transition = "opacity 1s ease-out";
+            errorMsg.style.opacity = "0";
+        }, 2000);
+        
+        // Store errors
         form_errors.push({
             time: Date.now(),
             location: "email",
             value: emailField.value,
             error: "Invalid email as input"
         });
-        formErrorsElement.value = JSON.stringify(form_errors);
     }
     else {
         emailField.style.backgroundColor = "white";
@@ -110,7 +166,10 @@ msgField.addEventListener("input", () => {
     const errorMsg = document.getElementById("message-error");
     const allowedPattern = /^[a-zA-Z0-9 .,!?'\n]*$/;
     if (!allowedPattern.test(msgField.value)) {
-        //Flash
+        // Masking
+        msgField.value = msgField.value.replace(/[^a-zA-Z0-9 .,!?'\n]/g, "");
+
+        // Flash
         setTimeout(() => {
             msgField.style.backgroundColor = "rgb(243, 199, 199)" ? "white" : "white";
         }, 100);
@@ -127,6 +186,8 @@ msgField.addEventListener("input", () => {
             errorMsg.style.transition = "opacity 1s ease-out";
             errorMsg.style.opacity = "0";
         }, 2000);
+        
+        // Store errors
         form_errors.push({
             time: Date.now(),
             location: "message",
@@ -137,6 +198,7 @@ msgField.addEventListener("input", () => {
     else {
         msgField.style.backgroundColor = "white";
     }
+    
     // Count char 
     const charCount = document.getElementById("char-count");
     const totalAllowed = document.getElementById("total-char");
@@ -152,6 +214,8 @@ msgField.addEventListener("input", () => {
     }
     if (parseInt(charCount.value) == 3000) {
         charFull.value = "Character limit reached";
+
+        // Store errors
         form_errors.push({
             time: Date.now(),
             location: "message",
@@ -162,5 +226,6 @@ msgField.addEventListener("input", () => {
 });
 
 formElement.addEventListener("submit", () => {
+    // Submit errors
     document.getElementById("form-errors").value = JSON.stringify(form_errors);
 });
