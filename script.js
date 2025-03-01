@@ -160,3 +160,7 @@ msgField.addEventListener("input", () => {
         });
     } else { charFull.value = ""; }
 });
+
+formElement.addEventListener("submit", () => {
+    document.getElementById("form-errors").value = JSON.stringify(form_errors);
+});
