@@ -63,7 +63,9 @@
                     <label for="message" class="contact-label">Your Message:</label> <br>
                     <textarea id="message" name="message" rows="4" cols="50" class="contact-field" minlength="3" maxlength="3000" pattern="[a-zA-Z0-9 .,!?']*" required></textarea> 
                     <br>
-                    <output class="info" id="char-count" style="align-self: self-end;">0/3000</output>
+                    <output class="info" id="char-count">0</output> 
+                    <output class="info" id="total-char">/ 3000</output> 
+                    <output class="error-message" id="full-char"></output>
                     <output class="error-message" id="message-error"></output>
 
                     <br><br>

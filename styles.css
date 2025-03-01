@@ -283,6 +283,11 @@ job-exp:has(h3) {
     font-size: small;
 }
 
+#full-char {
+    color: red;
+    font-weight: bold;
+}
+
 #msg-button, #contact-back {
     display: block;
     padding: 8px 20px;

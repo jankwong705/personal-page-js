@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     msgField.addEventListener("input", () => {
         const errorMsg = document.getElementById("message-error");
-        const allowedPattern = /^[a-zA-Z0-9 .,!?']*$/;
+        const allowedPattern = /^[a-zA-Z0-9 .,!?'\n]*$/;
         if (!allowedPattern.test(msgField.value)) {
             //Flash
             setTimeout(() => {
@@ -109,6 +109,21 @@ document.addEventListener("DOMContentLoaded", () => {
             msgField.style.backgroundColor = "white";
         }
         // Count char 
+        const charCount = document.getElementById("char-count");
+        const totalAllowed = document.getElementById("total-char");
+        const charFull = document.getElementById("full-char");
+        charCount.value = msgField.value.length;
+        if (parseInt(charCount.value) >= 2500) {
+            charCount.style.cssText = "color: red; font-weight: bold;";
+            totalAllowed.style.cssText = "color: red; font-weight: bold;";
+        }
+        else {
+            charCount.style.cssText = "color: black; font-weight: regular;";
+            totalAllowed.style.cssText = "color: black; font-weight: regular;";
+        }
+        if (parseInt(charCount.value) == 3000) {
+            charFull.value = "Character limit reached";
+        } else { charFull.value = ""; }
     });
     
 });
