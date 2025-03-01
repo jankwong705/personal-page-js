@@ -275,9 +275,9 @@ job-exp:has(h3) {
     font-size: 16px;            
 }
 
-/* .contact-field:user-invalid {
+.contact-field:user-invalid {
     background-color: rgb(243, 199, 199);
-} */
+}
 
 .error-message, #reply-soon {
     font-size: small;

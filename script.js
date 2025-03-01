@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    emailField.addEventListener("blur", () => {
+    emailField.addEventListener("input", () => {
         const errorMsg = document.getElementById("email-pattern-mismatch");
         if (emailField.validity.patternMismatch) {
             //Flash
@@ -85,7 +85,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     msgField.addEventListener("input", () => {
         const errorMsg = document.getElementById("message-error");
-        if (msgField.validity.patternMismatch) {
+        const allowedPattern = /^[a-zA-Z0-9 .,!?']*$/;
+        if (!allowedPattern.test(msgField.value)) {
             //Flash
             setTimeout(() => {
                 msgField.style.backgroundColor = "rgb(243, 199, 199)" ? "white" : "white";
@@ -104,6 +105,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 errorMsg.style.opacity = "0";
             }, 2000);
         }
-    })
+        else {
+            msgField.style.backgroundColor = "white";
+        }
+    });
     
 });
