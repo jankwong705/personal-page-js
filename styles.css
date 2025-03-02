@@ -184,6 +184,11 @@ a {
     height: 34px;
 }
 
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
 /* Hide default HTML checkbox */
 .switch input {
     opacity: 0;

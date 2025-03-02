@@ -1,10 +1,13 @@
 const lightSwtich = document.getElementById("light-switch");
 
 lightSwtich.addEventListener("change", () => {
+    // Light mode
     if(lightSwtich.checked) {
-        // Light mode
+        localStorage.setItem("mode", "light");
     }
+    // Dark mode
     else {
-        // Dark mode
+        document.body.classList.add("dark-mode");
+        localStorage.setItem("mode", "dark");
     }
 });
