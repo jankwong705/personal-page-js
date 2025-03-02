@@ -1,11 +1,12 @@
 const darkMode = "dark-mode";
 
+// Elements needed to change color 
 const lightSwtich = document.getElementById("light-switch");
 const expList = document.getElementsByTagName("job-exp");
 const headerList = document.querySelectorAll('header ul li');
 const refList = document.querySelectorAll("a");
 
-
+// Stores previous selection 
 if(localStorage.getItem("mode") == "dark") {
     lightSwtich.checked = false;
     document.body.classList.add(darkMode);
