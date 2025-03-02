@@ -115,6 +115,15 @@ h1, h2 {
     animation: fade 1.5s ease-in-out;
 }
 
+a {
+    color: black; /* Set the default link color */
+    text-decoration: none; /* Optional: Remove the underline */
+}
+
+a:visited {
+    color: black; /* Set the color for visited links to match default */
+}
+
 .page-header {
     padding: var(--standard-gap);
 }
@@ -184,7 +193,7 @@ a {
     height: 34px;
 }
 
-body.dark-mode {
+body.dark-mode, header ul li.dark-mode{
     background-color: #151728;
     color: #ffffff;
 }
@@ -193,6 +202,10 @@ job-exp.dark-mode {
     background-color: #242b60;
     border: 2px solid #62787f;
     color: #ffffff;
+}
+
+a.dark-mode {
+    color: white;
 }
 
 /* Hide default HTML checkbox */
