@@ -227,8 +227,10 @@ job-exp.dark-mode {
     transition: .4s;
 }
 
+/* Change color as toggled */
 input:checked + .slider {
     background-color: var(--light-mode);
+    outline: 3px solid var(--dark-mode);
 }
 
 input:focus + .slider {
@@ -244,6 +246,7 @@ input:checked + .slider:before {
 /* Rounded sliders */
 .slider.round {
     border-radius: 34px;
+    outline: 3px solid white;
 }
 
 .slider.round:before {
