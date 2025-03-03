@@ -116,12 +116,12 @@ h1, h2 {
 }
 
 a {
-    color: black; /* Set the default link color */
-    text-decoration: none; /* Optional: Remove the underline */
+    color: black;
+    text-decoration: none; 
 }
 
 a:visited {
-    color: black; /* Set the color for visited links to match default */
+    color: black; 
 }
 
 .page-header {
